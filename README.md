@@ -29,7 +29,7 @@ Numpy and Pandas, both Python libraries (meaning pre-programmed toolsets) are th
     4. Check for Duplicates
     5. Detect Outliers 
   
-  ### Step 1: Importing Libraries
+  ## Step 1: Importing Libraries
   
  Before digging the data firstly you should take a glimpse of data to understand what variables you’re working with, how the values are structured based on the column they’re in, and maybe you could have a rough idea of the inconsistencies that you’ll need to address.
   
@@ -37,7 +37,7 @@ Numpy and Pandas, both Python libraries (meaning pre-programmed toolsets) are th
   
   ![importing-libraries](https://user-images.githubusercontent.com/69766918/231997460-e827db5d-2084-44ca-ae91-51b9ddb378d6.jpg)
   
- ### Step 2: Input Iris Dataset
+ ## Step 2: Input Iris Dataset
  
   Next we need to load a data file(standad way in whic data is collected and stored) that can be in CSV, txt or xlsx format,json,HTML,mp3 or mp4. Most commonly format are comma separated values(CSV) and excel (xlsx).
   
@@ -55,7 +55,7 @@ As you can see the first column is index and the second column is also index but
 
 Using the index_col parameter can be useful when working with datasets where the index represents a unique identifier for each row, such as a date or a user ID.
   
-  ### Step 3: Locate missing values
+  ## Step 3: Locate missing values
   
   A common function, 'isnull' helps us find where in our dataset there are missing values. We will use head() with isnull() to see missing values. Tou will see True in the missing cells. Nest we can also count missing values using sum command.
   
@@ -85,7 +85,7 @@ To determine the cause of the NaN value in your bank cell, you may need to exami
   
   **From here, we use code to actually clean the data. This boils down to two basic options. 1) Drop the data or, 2) Input missing data. If you opt to:**
   
-  #### Step 3(a): Drop the data
+  ### Step 3(a): Drop the data
   
   
   **You’ll have to make another decision – whether to drop only the missing values(entire rows will be deleted) and keep the data in the set, or to eliminate the feature (the entire column) because there are so many missing datapoints that it isn’t fit for analysis.**
@@ -109,7 +109,7 @@ You can also specify additional parameters to customize how dropna() handles mis
 
 ![dropping-usingsubset](https://user-images.githubusercontent.com/69766918/232026651-88e35786-bca1-4082-9118-b86fda034302.jpg)
 
-#### Step 3(b): Input missing data
+### Step 3(b): Input missing data
 
 There are several ways to input missing data in Python. Here are some common methods:
 
@@ -117,4 +117,65 @@ There are several ways to input missing data in Python. Here are some common met
 
 When inplace = True , the data is modified in place, which means it will return nothing and the dataframe is now updated. When inplace = False , which is the default, then the operation is performed and it returns a copy of the object. You then need to save it to something.
 
+![replacing-missingwithconstant](https://user-images.githubusercontent.com/69766918/232118589-3e27cf09-87c4-4c72-9d2f-1b90158a3e2b.jpg)
+
+**Replace with mean or median:** You can replace the missing values with the mean or median of the remaining data in the same column.
+
+![mean median](https://user-images.githubusercontent.com/69766918/232119935-7ad47776-01c7-4320-a3d4-d23f14806da0.jpg)
+
+
+**Forward or backward fill:** You can use forward or backward fill to replace missing values with the nearest non-missing value.
+
+![forwar backward-filling](https://user-images.githubusercontent.com/69766918/232120730-3e0d2a62-04af-4a85-b265-513078f91af5.jpg)
+
+**Interpolation:** You can use interpolation to estimate missing values based on the values of neighboring rows or columns. Another way of describing it is the act of inserting or interjecting an intermediate value between two other values.
+![interpolation](https://user-images.githubusercontent.com/69766918/232121801-2c02a2b4-c8e7-4f73-86d6-ad16a5a7f460.jpg)
+
+**There are other techniques also. I am using df.head() repeatedly with all commands so as to have a better understanding and comparing of thge results.**
+
+  ## Step 4: Check for duplicates
+  
+  In a Pandas DataFrame, duplicate values refer to the occurrence of the same row of data more than once. This means that all column values in the row are the same as the column values of another row in the DataFrame.
+  
+![duplication-check](https://user-images.githubusercontent.com/69766918/232127493-9e0babfe-a948-417a-8527-a86b36cd8358.jpg)
+
+**Tip:We can see the whole database the way i did using display.max_rows command**
+We can count the duplicated values using sum().
+
+![counting-duplicatevalues](https://user-images.githubusercontent.com/69766918/232128222-46bbdbf8-b608-4120-8020-a9937bf1b362.jpg)
+
+We can get rid of that duplicate (datapoint 3) values by dropping the duplicates.
+
+![dropping-duplicates](https://user-images.githubusercontent.com/69766918/232128919-b9714c94-e178-4038-b10f-8a8abf05c94b.jpg)
+
+## Step 5: Detect Outliers
+
+Outliers are numerical values that lie significantly outside of the statistical norm. Cutting that down from unnecessary science garble – they are data points that are so out of range they are likely misreads. 
+
+They, like duplicates, need to be removed. Let’s sniff out an outlier by first, pulling up our dataset.
+
+If there are outliers in a column, the describe() function may show some of the following signs:
+
+* A large difference between the mean and median (50th percentile) values. This indicates that the data may be skewed, and that there are some extreme values pulling the mean away from the median.
+* A large difference between the 75th percentile and the maximum value. This indicates that there may be some extreme values that are much higher than the bulk of the data.
+* A large difference between the minimum value and the 25th percentile. This indicates that there may be some extreme values that are much lower than the bulk of the data.
+
+However, it's important to note that the describe() function alone may not be sufficient to detect all outliers, and that further analysis and visualization may be needed. Additionally, the decision about whether a data point is an outlier or not should always be based on the context of the data and the problem being solved, rather than just statistical cutoffs.
+
+
+![describe](https://user-images.githubusercontent.com/69766918/232134644-bf1486f6-9a1e-4f41-84b4-8ea28b4a982f.jpg)
+
+
+
+
+
+You’ve successfully cleaned this dataset. Keep in mind that everyone has their methodology of data cleaning, and a lot of it is just from putting in the effort to understand your dataset. 
+
+Thanks for reading. You can check me out on [LinkedIn](https://www.linkedin.com/in/harkeerat-pathak-happy/)
+
+
+
+ 
+  
+  
   
